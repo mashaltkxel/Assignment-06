@@ -28,26 +28,26 @@ pipeline {
                 '''
             }
         }
-        // stage('Sonarqube') {
-        //     environment {
-        //         scannerHome = tool 'SonarQubeScanner'
-        //     }
-        //     steps {
-        //         withSonarQubeEnv('SonarQube') {
-        //             //sh "${scannerHome}/bin/sonar-scanner"
-        //             echo 'SonarQube Scanning with Jenkins'
-        //         }
-        //         timeout(time: 10, unit: 'MINUTES') {
-        //             waitForQualityGate abortPipeline: true
-        //         }
-        //     }
-        // }
-        stage('SonarQube analysis') {
+        stage('Sonarqube') {
+            environment {
+                scannerHome = tool 'SonarQubeScanner'
+            }
             steps {
-                script {
-                    sh 'sonarqube.js'
+                withSonarQubeEnv('SonarQube') {
+                    //sh "${scannerHome}/bin/sonar-scanner"
+                    echo 'SonarQube Scanning with Jenkins'
+                }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
+        // stage('SonarQube analysis') {
+        //     steps {
+        //         script {
+        //             sh 'sonarqube.js'
+        //         }
+        //     }
+        // }
     }
 }
