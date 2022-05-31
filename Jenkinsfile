@@ -32,22 +32,25 @@ pipeline {
             environment {
                 scannerHome = tool 'SonarQubeScanner'
             }
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    //sh "${scannerHome}/bin/sonar-scanner"
-                    echo 'SonarQube Scanning with Jenkins'
+                withSonarQubeEnv {
+                sh "${scannerHome}/bin/sonar-scanner"
                 }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-        // stage('SonarQube analysis') {
-        //     steps {
-        //         script {
-        //             sh 'sonarqube.js'
-        //         }
+        // steps {
+        //     withSonarQubeEnv('SonarQube') {
+        //         //sh "${scannerHome}/bin/sonar-scanner"
+        //         echo 'SonarQube Scanning with Jenkins'
+        //     }
+        //     timeout(time: 10, unit: 'MINUTES') {
+        //         waitForQualityGate abortPipeline: true
         //     }
         // }
+        }
+    // stage('SonarQube analysis') {
+    //     steps {
+    //         script {
+    //             sh 'sonarqube.js'
+    //         }
+    //     }
+    // }
     }
 }
