@@ -32,9 +32,12 @@ pipeline {
             environment {
                 scannerHome = tool 'SonarQubeScanner'
             }
+            steps {
                 withSonarQubeEnv {
-                sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
+            }
+
         // steps {
         //     withSonarQubeEnv('SonarQube') {
         //         //sh "${scannerHome}/bin/sonar-scanner"
