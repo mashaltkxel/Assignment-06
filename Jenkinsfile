@@ -47,14 +47,14 @@ pipeline {
         //         waitForQualityGate abortPipeline: true
         //     }
         // }
-        }
-    stage('SonarQube analysis') {
-        steps {
-            script {
-                sh "node sonarqube.js"
+
+        stage('SonarQube analysis') {
+            steps {
+                script {
+                    sh 'node sonarqube.js'
+                }
             }
         }
-    }
-
+        }
     }
 
