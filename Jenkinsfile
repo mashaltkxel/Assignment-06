@@ -28,15 +28,15 @@ pipeline {
                 '''
             }
         }
-        stage('Sonarqube') {
-            environment {
-                scannerHome = tool 'SonarQubeScanner'
-            }
-            steps {
-                withSonarQubeEnv {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }
+        // stage('Sonarqube') {
+        //     environment {
+        //         scannerHome = tool 'SonarQubeScanner'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'SonarCloudOne', credentialsId: 'SonarCloudOne') {
+        //             sh "${scannerHome}/bin/sonar-scanner"
+        //         }
+        //     }
 
         // steps {
         //     withSonarQubeEnv('SonarQube') {
@@ -48,12 +48,13 @@ pipeline {
         //     }
         // }
         }
-    // stage('SonarQube analysis') {
-    //     steps {
-    //         script {
-    //             sh 'sonarqube.js'
-    //         }
-    //     }
-    // }
+    stage('SonarQube analysis') {
+        steps {
+            script {
+                sh "node sonarqube.js"
+            }
+        }
     }
-}
+
+    }
+
