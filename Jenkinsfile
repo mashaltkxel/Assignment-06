@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'nodejs'
+    }
     stages {
         stage('Master Branch Deploy Code') {
             when {
