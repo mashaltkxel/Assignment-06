@@ -13,11 +13,11 @@ pipeline {
             }
             steps {
                 sh '''
-                echo "Building Artifact from Master branch"
+                echo "Building Artifact from Master branch yayyyyy"
                 '''
 
                 sh '''
-                echo "Deploying Code from Master branch"
+                echo "Deploying Code from Master branch yayyyyyyy"
                 '''
             }
         }
@@ -27,10 +27,10 @@ pipeline {
             }
             steps {
                 sh '''
-                echo "Building Artifact from Feature branch"
+                echo "Building Artifact from Feature branch yayyyy"
                 '''
                 sh '''
-                echo "Deploying Code from Feature branch"
+                echo "Deploying Code from Feature branch yayyyyyyy"
                 '''
             }
         }
