@@ -1,11 +1,11 @@
 # stage1 as builder
-FROM node:10-alpine as builder
+FROM node:10-alpine as Mashal
 
 # copy the package.json to install dependencies
 COPY package.json package-lock.json ./
 
 # Install the dependencies and make the folder
-RUN npm install
+RUN npm install 
 RUN mkdir /react-ui 
 RUN mv ./node_modules ./react-ui
 
@@ -27,8 +27,8 @@ COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stahg 1
-COPY --from=builder /react-ui/build /usr/share/nginx/html
+COPY --from=Mashal /react-ui/build /usr/share/nginx/html
 
 EXPOSE 80
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]   
