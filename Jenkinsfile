@@ -1,11 +1,11 @@
 pipeline {
     agent any
-        	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-            }
-    tools {
-        nodejs 'nodejs'
-    }
+    //     	environment {
+	// 	DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    //         }
+    // tools {
+    //     nodejs 'nodejs'
+    // }
     stages {
         stage('Master Branch Deploy Code') {
             when {
