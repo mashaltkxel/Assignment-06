@@ -34,23 +34,23 @@ pipeline {
                 '''
             }
         }
-        stage('Building our image') {
-        steps{
-        script {
-        sh 'docker build -t react-app:latest .'
-        }
-        }
-        }
-        stage('Login and Push') {
-			steps {
-			withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-			    sh 'docker tag react-app:latest mashalaman/assignment-06:latest'
-			    sh 'docker images'
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-				sh 'docker push mashalaman/assignment-06:latest '
-			}
-			}
-		}
+        // stage('Building our image') {
+        // steps{
+        // script {
+        // sh 'docker build -t react-app:latest .'
+        // }
+        // }
+        // }
+        // stage('Login and Push') {
+		// 	steps {
+		// 	withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+		// 	    sh 'docker tag react-app:latest mashalaman/assignment-06:latest'
+		// 	    sh 'docker images'
+		// 		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+		// 		sh 'docker push mashalaman/assignment-06:latest '
+		// 	}
+		// 	}
+		// }
         // stage('Sonarqube') {
         //     environment {
         //         scannerHome = tool 'SonarQubeScanner'
